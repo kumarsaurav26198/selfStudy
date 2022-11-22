@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LogIn from '../src/pages/beforeLogin/LogIn';
 import SignUp from '../src/pages/beforeLogin/SignUp';
 import Home from '../src/pages/afterLogin/Home';
+import VideoEditor from '../src/pages/afterLogin/VideoEditor';
 
 
 const Stack = createNativeStackNavigator();
@@ -17,8 +18,9 @@ export const SignedInStack = () => {
     return (
         <>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
+                <Stack.Navigator initialRouteName="VideoEditor">
                     <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+                    <Stack.Screen name='VideoEditor' component={VideoEditor} options={{ headerShown: false }} />
                 </Stack.Navigator>
             </NavigationContainer>
         </>
