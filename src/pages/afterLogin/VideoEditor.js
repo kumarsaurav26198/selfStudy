@@ -1,17 +1,34 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, View, ScrollView, Text, ViewBase } from 'react-native';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import VideoEditButton from '../../components/VideoEditButton';
 
 const VideoEditor = () => {
-    const onPress = () => {
-
-    };
     return (
-        <SafeAreaView>
-            <TouchableOpacity style={styles.container} onPress={onPress}>
-                <Text style={styles.newText}>New Project</Text>
-            </TouchableOpacity>
-        </SafeAreaView>
+        <>
+            <>
+                <View style={styles.editContainer}>
+                    <Image source={require("../../../assets/images/Account.png")} style={{ width: "85%", height: "85%", }} />
+
+                </View>
+                <Text>Duration </Text>
+
+                <ScrollView style={styles.toolsContainer} scrollEnabled={true} horizontal={true}>
+                    <VideoEditButton toolsName={"Create"} image={require("../../../assets/ToolsIcons/video-editing.png")} />
+                    <VideoEditButton toolsName={"Merge"} image={require("../../../assets/ToolsIcons/tab.png")} />
+                    <VideoEditButton toolsName={"Split"} image={require("../../../assets/ToolsIcons/video-editor.png")} />
+                    <VideoEditButton toolsName={"FX"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Template"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Speed"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Trim"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Template"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Speed"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Trim"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Template"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Speed"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                    <VideoEditButton toolsName={"Trim"} image={require("../../../assets/ToolsIcons/effects.png")} />
+                </ScrollView>
+            </>
+        </>
     );
 };
 
@@ -19,21 +36,22 @@ export default VideoEditor;
 
 const styles = StyleSheet.create({
     container: {
-        width: "50%",
-        height: 60,
-        borderWidth: 1,
-        borderRadius: 30,
-        alignSelf: "center",
-        flexDirection: "row",
-        alignItems: "center",
-        paddingLeft: 20,
-        paddingRight: 20,
-        marginTop: 50,
-        backgroundColor: "#3a89fb",
+        paddingHorizontal: 10,
+        backgroundColor: "#000",
+        height: "100%",
+        width: "100%"
     },
-    newText: {
-        color: "#fff",
-        fontWeight: "600",
-        fontSize: 30,
+    editContainer: {
+        height: "65%",
+        width: "100%",
+        backgroundColor: "#0b0b1b",
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    toolsContainer: {
+        height: 70,
+        position: "absolute",
+        bottom: 0,
+        backgroundColor: "#000"
     }
 });

@@ -4,7 +4,7 @@ import { SignedInStack, SignedOutStack } from './AppNavigation';
 
 const AuthNavigation = () => {
 
-    const [currentUser, setCurrentUser] = useState("Ram");
+    const [currentUser, setCurrentUser] = useState("ram");
 
     //   const userHandler = user => user ? setCurrentUser(user) : setCurrentUser(null);
 
