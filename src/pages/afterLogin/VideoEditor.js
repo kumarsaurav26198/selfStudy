@@ -1,16 +1,17 @@
-import { Image, StyleSheet, View, ScrollView, Text, ViewBase } from 'react-native';
+import { Image, StyleSheet, ScrollView, Text } from 'react-native';
 import React from 'react';
 import VideoEditButton from '../../components/VideoEditButton';
+import AccessPhotos from './AccessPhotos';
 
 const VideoEditor = () => {
     return (
         <>
             <>
-                <View style={styles.editContainer}>
+                {/* <View style={styles.editContainer}>
                     <Image source={require("../../../assets/images/Account.png")} style={{ width: "85%", height: "85%", }} />
 
-                </View>
-                <Text>Duration </Text>
+                </View> */}
+                <AccessPhotos />
 
                 <ScrollView style={styles.toolsContainer} scrollEnabled={true} horizontal={true}>
                     <VideoEditButton toolsName={"Create"} image={require("../../../assets/ToolsIcons/video-editing.png")} />
