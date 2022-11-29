@@ -16,9 +16,8 @@ const ImagePickerTry = () => {
     }, []);
     return (
         <SafeAreaView style={styles.container}>
-            <Text>🌄 React Native Image Picker</Text>
             <ScrollView>
-                <CustomButton title={"ImagePicker"} backgroundColor={"red"} onPress={onButtonPress} color={"blue"} />
+                <CustomButton title={" Select Image"} backgroundColor={"#efbfff"} onPress={onButtonPress} color={"#fff"} />
                 {response?.assets &&
                     response?.assets.map(({ uri }) => (
                         <View key={uri} style={styles.imageContainer}>
