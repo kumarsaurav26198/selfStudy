@@ -5,7 +5,7 @@ import Video from 'react-native-video';
 import CustomButton from '../../components/CustomButton';
 
 const Videoshow = () => {
-    const [response, setResponse] = useState(null);
+    const [ response, setResponse ] = useState(null);
     const handlechoosephoto = () => {
         const options = { mediaType: 'video', noData: 'false' };
         Imagepicker.launchImageLibrary(options, setResponse);
