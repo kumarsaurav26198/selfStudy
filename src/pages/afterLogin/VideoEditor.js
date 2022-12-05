@@ -1,6 +1,5 @@
 import { Image, StyleSheet, ScrollView, Text, View } from 'react-native';
 import React, { useState, useCallback } from 'react';
-import * as Imagepicker from 'react-native-image-picker';
 import VideoEditButton from '../../components/VideoEditButton';
 import Video from 'react-native-video';
 import * as ImagePicker from 'react-native-image-picker';
@@ -10,9 +9,27 @@ import * as ImagePicker from 'react-native-image-picker';
 const VideoEditor = () => {
     const [response, setResponse] = useState(null);
 
-    const handlechooseVideo = () => {
+    const handleChooselaunchCamera = () => {
         const options = { mediaType: 'video', noData: 'false' };
-        Imagepicker.launchImageLibrary(options, setResponse);
+        ImagePicker.launchCamera(
+            {
+                includeBase64: false,
+                mediaType: 'photo',
+                quality: 0.8,
+            },
+            async (response) => {
+                if (response.didCancel)
+                {
+                    console.log('User cancelled image picker');
+                } else if (response.error)
+                {
+                    console.log('ImagePicker Error: ', response.error);
+                } else
+                {
+
+                }
+            },
+        );
     };
     const handlechooseImage = useCallback((type, options) => {
         if (type === 'capture')
@@ -23,9 +40,19 @@ const VideoEditor = () => {
             ImagePicker.launchImageLibrary(options, setResponse);
         }
     }, []);
+    const handlechooseVideo = () => {
+        const options = { mediaType: 'video', noData: 'false' };
+        ImagePicker.launchImageLibrary(options, setResponse);
+    };
+    const handlechooseCutVideo = () => {
+        const options = { mediaType: 'video', noData: 'false' };
+        ImagePicker.launchImageLibrary(options, setResponse);
+    };
+
     return (
         <>
             <View style={styles.editContainer}>
+
                 {response?.assets &&
                     response?.assets.map(({ uri }) => (
                         <>
@@ -81,8 +108,10 @@ const VideoEditor = () => {
 
 
             <ScrollView style={styles.toolsContainer} scrollEnabled={true} horizontal={true}>
-                <VideoEditButton toolsName={"Video"} image={require("../../../assets/ToolsIcons/video-editing.png")} onPress={handlechooseVideo} />
+                <VideoEditButton toolsName={"Camera"} image={require("../../../assets/ToolsIcons/camera.png")} onPress={handleChooselaunchCamera} />
                 <VideoEditButton toolsName={"Image"} image={require("../../../assets/ToolsIcons/video-editing.png")} onPress={handlechooseImage} />
+                <VideoEditButton toolsName={"Video"} image={require("../../../assets/ToolsIcons/video-editorIcon.png")} onPress={handlechooseVideo} />
+                <VideoEditButton toolsName={"Cut"} image={require("../../../assets/ToolsIcons/video-editor.png")} onPress={handlechooseCutVideo} />
                 <VideoEditButton toolsName={"Merge"} image={require("../../../assets/ToolsIcons/tab.png")} />
                 <VideoEditButton toolsName={"Split"} image={require("../../../assets/ToolsIcons/video-editor.png")} />
                 <VideoEditButton toolsName={"FX"} image={require("../../../assets/ToolsIcons/effects.png")} />
